@@ -11,12 +11,20 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 
-const ProductCard = ({ id, title, image, price }) => {
+const ProductCard = ({  title, image, price }) => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+
+  const onClickHandler = () => {
+    navigate(`/details/${id}`)
+  }
+  console.log(id);
   return (
     <Box>
       {
-        <Box className="" key={id}>
+        <Box className="" key={id} onClick={onClickHandler}>
           {/* <img
                 src={`data:${item.image.contentType};base64,${Buffer.from(
                   item.image.data.data
@@ -28,7 +36,6 @@ const ProductCard = ({ id, title, image, price }) => {
             sx={{
               maxWidth: {
                 sm: 345,
-               
               },
               cursor: "pointer",
             }}
@@ -39,11 +46,16 @@ const ProductCard = ({ id, title, image, price }) => {
                   image={image}
                   title={title}
                 /> */}
-            <Box className="" sx={{
-              height: {
-                sm: 385, 
-                xs: 248
-            }, padding: "" }}>
+            <Box
+              className=""
+              sx={{
+                height: {
+                  sm: 385,
+                  xs: 248,
+                },
+                padding: "",
+              }}
+            >
               <img
                 src={image}
                 alt={title}
