@@ -8,37 +8,17 @@
   --heading6: 18px;
 
   --black: #22262A;
-  --grey:#F6F7F8;
-
-  --grey100: #C1C8CE;
-  --grey200: #E5E8EA;
-  --grey300: #F1F3F4;
-
-  --blue: #0D2840;
-  --blue100: #19507F;
-  --blue200: #2678BF;
-  --blue300: #2E90E5;
-  --blue400: #33A0FF;
-
+  --grey:#CECECE;
+--green: rgba(0, 162, 0, 0.494);
   --purple: #8F65FF;
   --purple100: #9E7AFF;
   --purple200: #BAA1FF;
 
-  --red:#FF4252;
-  --red100:#FF4858;
-  --red200:#FF6875;
+  --red:#FF0000;
 
-  --green: #0AD00A;
-  --green100: #39DB39;
-  --green200: #6DE26D;
-
-  --yellow: #FFC600;
-  --yellow100: #FFD33A;
-  --yellow200: #FFDA58;
-
-  --bg-grad: linear-gradient(90deg, rgba(255,72,88,1) 0%, rgba(143,101,255,1) 100%);
-
+  --yellow: #FBB03B;
   
+  --bg-grad: linear-gradient(90deg, rgba(255,72,88,1) 0%, rgba(143,101,255,1) 100%);
 
 }
 

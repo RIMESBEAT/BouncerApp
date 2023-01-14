@@ -1,8 +1,8 @@
-import { Box,  Typography } from "@mui/material";
+import { Box,  Button,  Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import Button from "@mui/material-next/Button";
+
 
 
 const LatestProducts = () => {
@@ -34,13 +34,7 @@ const LatestProducts = () => {
     >
       <Typography variant="h5" fontWeight="bold" textAlign="center" m="2rem 0">
         Products In Today
-        <Button
-          color="tertiary"
-          disabled={false}
-          size="small"
-          variant="elevated"
-          placeholder="kingggggggg"
-        />
+
       </Typography>
       <Box
         sx={{
@@ -50,7 +44,6 @@ const LatestProducts = () => {
           justifyContent: "center",
           margin: "0 auto",
           gap: "1.5rem",
-          border: " 2px solid red",
           width: "100%",
         }}
       >

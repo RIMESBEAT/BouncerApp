@@ -25,7 +25,7 @@ const TrustPage = () => {
           <CardContent>
             <img src={FreeShipping} alt="" />
             <Typography variant="h6">Free Shipping</Typography>
-            <Typography variant="body2">
+            <Typography variant="body1">
               All purchases over $199 are eligible for free shipping via USPS
               First Class Mail.
             </Typography>
@@ -35,7 +35,7 @@ const TrustPage = () => {
           <CardContent>
             <img src={PaymentsImg} alt="" />
             <Typography variant="h6">Easy Payment</Typography>
-            <Typography variant="body2">
+            <Typography variant="body1">
               All payments are processed instantly over a secure payment
               protocol.
             </Typography>
@@ -45,7 +45,7 @@ const TrustPage = () => {
           <CardContent>
             <img src={Moneyback} alt="" />
             <Typography variant="h6">Money Back Warranty</Typography>
-            <Typography variant="body2">
+            <Typography variant="body1">
               If an item arrived damaged or you've changed your mind, you can
               send it back for a full refund.
             </Typography>
@@ -55,7 +55,7 @@ const TrustPage = () => {
           <CardContent>
             <img src={Quality} alt="" />
             <Typography variant="h6">Money-Back Guarantee</Typography>
-            <Typography variant="body2">
+            <Typography variant="body1">
               Designed to last, each of our products has been crafted with the
               finest materials.
             </Typography>
