@@ -1,4 +1,6 @@
-@import url('https://fonts.cdnfonts.com/css/proxima-nova-2');
+/* @import url('https://fonts.cdnfonts.com/css/proxima-nova-2'); */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 :root{
   --heading1: 56px;
   --heading2: 48px;
@@ -7,8 +9,11 @@
   --heading5: 24px;
   --heading6: 18px;
 
+  --boxshadow: "2px 6px 9px 1px #22262a5a";
+
+
   --black: #22262A;
-  --grey:#CECECE;
+  --grey:#a2a0a0;
 --green: rgba(0, 162, 0, 0.494);
   --purple: #8F65FF;
   --purple100: #9E7AFF;
@@ -17,8 +22,12 @@
   --red:#FF0000;
 
   --yellow: #FBB03B;
+
   
   --bg-grad: linear-gradient(90deg, rgba(255,72,88,1) 0%, rgba(143,101,255,1) 100%);
+
+
+
 
 }
 
@@ -30,7 +39,7 @@
 }
 
 body {
-   font-family: 'Proxima Nova', sans-serif;
+   font-family: 'Poppins', sans-serif;
    overflow-x: hidden;                                              
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,6 +48,7 @@ body {
 a{
   text-decoration: none;
   color: black;
+  
 }
 .container{
   position: relative;
@@ -49,3 +59,19 @@ a{
   
 
 }
+button.active{
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+button.disable{
+  color: black;
+  outline: none;
+  border: black;
+}
+
+.slider-image {
+  max-height: 400px;
+  object-fit: contain;
+}
+
+

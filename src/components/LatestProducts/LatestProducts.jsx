@@ -49,7 +49,7 @@ const LatestProducts = () => {
       >
         {getProduct &&
           getProduct.slice(0, 4).map((item) => {
-            return <ProductCard {...item} />;
+            return <ProductCard {...item} key={item.id} />;
           })}
       </Box>
     </Box>

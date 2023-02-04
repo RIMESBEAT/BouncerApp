@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { width } from "@mui/system";
 
 const Footer = () => {
+  let date = new Date().getFullYear()
   return (
     <>
       <Box
@@ -20,9 +21,9 @@ const Footer = () => {
           justifyContent: "space-between",
           gap: "1rem",
           p: {
-            xs: "4rem 1rem",
-            sm: "4rem 2rem",
-            md: "4rem 3rem",
+            xs: "2rem 1rem",
+            sm: "2rem 2rem",
+            md: "2rem 3rem",
           },
           gridTemplateColumns: {
             lg: "2fr 1fr 1fr 1fr",
@@ -43,7 +44,7 @@ const Footer = () => {
         >
           <Box variant="span">
             <img src={Logo} alt="" />
-            <span style={{ color: "var(--yellow)" }}>E-</span>Shop
+            <span variant="span" style={{ color: "var(--yellow)", fontWeight: "bold" }}>E-</span>Shop
           </Box>
           <Typography variant="body1">
             House My Brand designs clothing for the young, the old & everyone in
@@ -83,9 +84,10 @@ const Footer = () => {
             },
             justifyContent: "space-between",
             flexDirection: "column",
+            fontSize: "12px",
           }}
         >
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="body2" fontWeight="bold">
             Shopping Online
           </Typography>
           <Link to="/">Order Status</Link>
@@ -113,9 +115,10 @@ const Footer = () => {
               sm: "normal",
               xs: "center",
             },
+            fontSize: "12px",
           }}
         >
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="body2" fontWeight="bold">
             Information
           </Typography>
           <Link to="/">Gift Cards</Link>
@@ -135,16 +138,17 @@ const Footer = () => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "",
+            
             justifyContent: "",
             flexDirection: "column",
             alignItems: {
               sm: "normal",
               xs: "center",
             },
+            fontSize: "12px",
           }}
         >
-          <Typography variant="h6" fontWeight="bold">
+          <Typography variant="body2" fontWeight="bold">
             Contact
           </Typography>
           <Link to="/">store@uikit</Link>
@@ -182,11 +186,12 @@ const Footer = () => {
         sx={{
           textTransform: "uppercase",
           textAlign: "center",
-                  borderBottom: "6px solid var(--green)",
-          pt: "1rem"
+          borderBottom: "6px solid var(--green)",
+          pt: "0.5rem",
+          fontSize: "10px",
         }}
       >
-        Designed by iceo.co &copy; 2019. all rights reserved
+        Designed by iceo.co &copy; {date}. all rights reserved
       </Typography>
     </>
   );

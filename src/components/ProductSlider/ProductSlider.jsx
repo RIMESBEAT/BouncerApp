@@ -55,9 +55,9 @@ const ProductSlider = () => {
         {getProduct &&
           getProduct.map((item) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={item.id}>
                 <div className="">
-                  <ProductCard {...item} />
+                  <ProductCard {...item} key={item.id} />
                 </div>
               </SwiperSlide>
             );

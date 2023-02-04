@@ -1,6 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Buffer } from "buffer";
+import React from 'react'
 import {
   Box,
   Button,
@@ -11,20 +9,18 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-const ProductCard = ({ id, title, image, price }) => {
-  // const { id } = useParams()
-  const navigate = useNavigate()
-
-  const onClickHandler = () => {
-    navigate(`/details/${id}`)
-  }
- 
+const TestCard = ({ title, price, color, imageUrl, category, description, _id }) => {
+    const navigate = useNavigate()
+    
+      const onClickHandler = () => {
+        navigate(`/details/${_id}`);
+      };
   return (
     <Box>
       {
-        <Box className="" key={id} onClick={onClickHandler}>
+        <Box className="" key={_id}>
           {/* <img
                 src={`data:${item.image.contentType};base64,${Buffer.from(
                   item.image.data.data
@@ -38,7 +34,10 @@ const ProductCard = ({ id, title, image, price }) => {
                 sm: 345,
               },
               cursor: "pointer",
+
+              
             }}
+            onClick={onClickHandler}
           >
             {/* <CardMedia
                   sx={{height: 196, objectFit: "cover" }}
@@ -53,15 +52,15 @@ const ProductCard = ({ id, title, image, price }) => {
                   sm: 385,
                   xs: 248,
                 },
-                padding: "",
+                padding: "1rem",
               }}
             >
               <img
-                src={image}
+                src={imageUrl}
                 alt={title}
                 width="100%"
                 height="100%"
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
             </Box>
 
@@ -82,6 +81,9 @@ const ProductCard = ({ id, title, image, price }) => {
               <Typography variant="body2" color="text.secondary">
                 $ {price}
               </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {description}
+              </Typography>
             </CardContent>
             <Divider />
           </Card>
@@ -91,4 +93,4 @@ const ProductCard = ({ id, title, image, price }) => {
   );
 };
 
-export default ProductCard;
+export default TestCard

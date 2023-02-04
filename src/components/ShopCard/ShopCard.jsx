@@ -1,6 +1,4 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Buffer } from "buffer";
+import React from "react";
 import {
   Box,
   Button,
@@ -11,20 +9,34 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Unlike from "../../assets/unlike.png";
+import Like from "../../assets/like.png";
+import { useState } from "react";
 
-const ProductCard = ({ id, title, image, price }) => {
-  // const { id } = useParams()
-  const navigate = useNavigate()
+const ShopCard = ({
+  title,
+  price,
+  color,
+  imageUrl,
+  category,
+  description,
+  _id,
+}) => {
+  const navigate = useNavigate();
+  const [likeToggle, setLikeToggle] = useState(false);
+
+  const toggleLikeHandler = () => {
+    setLikeToggle(!likeToggle);
+  };
 
   const onClickHandler = () => {
-    navigate(`/details/${id}`)
-  }
- 
+    navigate(`/details/${_id}`);
+  };
   return (
     <Box>
       {
-        <Box className="" key={id} onClick={onClickHandler}>
+        <Box className="" key={_id}>
           {/* <img
                 src={`data:${item.image.contentType};base64,${Buffer.from(
                   item.image.data.data
@@ -32,12 +44,14 @@ const ProductCard = ({ id, title, image, price }) => {
                 alt={item.title}
                 width="200px"
               /> */}
+
           <Card
             sx={{
               maxWidth: {
                 sm: 345,
               },
               cursor: "pointer",
+              position: "relative",
             }}
           >
             {/* <CardMedia
@@ -47,21 +61,32 @@ const ProductCard = ({ id, title, image, price }) => {
                   title={title}
                 /> */}
             <Box
+              onClick={toggleLikeHandler}
+              sx={{ position: "absolute", top: "2rem", right: "2rem" }}
+            >
+              {likeToggle ? (
+                <img src={Like} alt={Like} width="50" />
+              ) : (
+                <img src={Unlike} alt={Unlike} width="50" />
+              )}
+            </Box>
+            <Box
               className=""
               sx={{
                 height: {
                   sm: 385,
                   xs: 248,
                 },
-                padding: "",
+                padding: "1rem",
               }}
+              onClick={onClickHandler}
             >
               <img
-                src={image}
+                src={imageUrl[0]}
                 alt={title}
                 width="100%"
                 height="100%"
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
             </Box>
 
@@ -82,6 +107,9 @@ const ProductCard = ({ id, title, image, price }) => {
               <Typography variant="body2" color="text.secondary">
                 $ {price}
               </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {description}
+              </Typography>
             </CardContent>
             <Divider />
           </Card>
@@ -91,4 +119,4 @@ const ProductCard = ({ id, title, image, price }) => {
   );
 };
 
-export default ProductCard;
+export default ShopCard;
