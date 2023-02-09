@@ -5,51 +5,41 @@ import { Route, Routes } from "react-router-dom";
 import Kids from "./Kids";
 import Men from "./Men";
 import Women from "./Women";
-import { useSelector } from "react-redux";
-import { setProducts } from "../../redux/actions/productsActions";
+import { useGetAllProductsQuery } from "../../features/productsApi";
 
 const Shop = () => {
-  const [getProduct, setGetProduct] = useState([]);
-  
-  const products = useSelector(((state)=>state.allProducts.products))
-  const dispatch = useDispatch()
+  const { data, error, isLoading } = useGetAllProductsQuery();
 
-    
-
-    const productsData = async () => {
-      await axios
-        .get(`http://localhost:4000/api/getProducts/`)
-
-        .then((response) => {
-          dispatch(setProducts(response.data));
-        })
-        .catch((err) => console.log(err));
-    };
-
-   const filterProductsByAgeGroup = (ageGroup) => {
-     return products.filter((product) => product.ageGroup === ageGroup);
+  const filterProductsByAgeGroup = (ageGroup) => {
+    return data?.filter((product) => product.ageGroup === ageGroup);
   };
-  useEffect(() => {
-      productsData();
-    }, []);
-    console.log(products);
+
   return (
     <div>
       <Routes>
-        {/* <Route path="/men" element={<Men getProduct={getProduct} />} />
-        <Route path="/women" element={<Women getProduct={getProduct} />} />
-        <Route path="/kids" element={<Kids getProduct={getProduct} />} /> */}
         <Route
           path="/men"
-          element={<Men products={filterProductsByAgeGroup("men")} />}
+          element={
+            <Men data={filterProductsByAgeGroup("men")} isLoading={isLoading} />
+          }
         />
         <Route
           path="/women"
-          element={<Women products={filterProductsByAgeGroup("women")} />}
+          element={
+            <Women
+              data={filterProductsByAgeGroup("women")}
+              isLoading={isLoading}
+            />
+          }
         />
         <Route
           path="/kids"
-          element={<Kids products={filterProductsByAgeGroup("kids")} />}
+          element={
+            <Kids
+              data={filterProductsByAgeGroup("kids")}
+              isLoading={isLoading}
+            />
+          }
         />
       </Routes>
     </div>

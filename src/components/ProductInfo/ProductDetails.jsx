@@ -18,7 +18,8 @@ import { useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../features/cartSlice";
 
 const ProductDetails = ({
   imageUrl,
@@ -31,7 +32,6 @@ const ProductDetails = ({
   colors,
   size,
 }) => {
-
   const [like, setLike] = useState(false);
 
   const [selectSize, setSelectSize] = useState(size);
@@ -39,7 +39,7 @@ const ProductDetails = ({
   const settings = {
     customPaging: (i) => (
       <Box
-        key={_id}
+        // key={id}
         component="div"
         sx={{ visibility: { sm: "none" } }}
         style={{
@@ -72,6 +72,25 @@ const ProductDetails = ({
     setCurrentImage(newImage);
   }, [newImage]);
 
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(
+      addToCart({
+        imageUrl,
+        description,
+        title,
+        price,
+        _id,
+        rating,
+        category,
+        colors,
+        size,
+      })
+    );
+  };
+
+ 
   return (
     <Box
       key={_id}
@@ -115,7 +134,7 @@ const ProductDetails = ({
                   style={{
                     height: 100,
                     width: 100,
-                    objectFit: "contain",
+                    objectFit: "cover",
                   }}
                 />
               ))}
@@ -279,7 +298,7 @@ const ProductDetails = ({
                 <Box fontSize="20px">4</Box>
                 <Box fontSize="30px">+</Box>
               </Box>
-              <Button>ADD TO CART</Button>
+              <Button onClick={addToCartHandler}>ADD TO CART</Button>
               <Box
                 onClick={() => {
                   setLike(!like);

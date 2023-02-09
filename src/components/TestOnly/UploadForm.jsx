@@ -184,7 +184,7 @@ const UploadForm = () => {
             type="number"
             placeholder="Price*"
           />
-          <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+          <FormControl variant="standard" sx={{ m: 1, minWidth: "45%",  }}>
             <InputLabel id="demo-simple-select-autowidth-label">
               AgeGroup*
             </InputLabel>
@@ -205,7 +205,7 @@ const UploadForm = () => {
             </Select>
           </FormControl>
 
-          <Box component="div" sx={{ width: "100%" }}>
+          <Box component="div" sx={{ width: "100%", display: "flex" }}>
             <FormControl variant="standard" sx={{ m: 1, minWidth: "45%" }}>
               <InputLabel id="demo-simple-select-autowidth-label">
                 Category

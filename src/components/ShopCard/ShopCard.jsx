@@ -36,7 +36,7 @@ const ShopCard = ({
   return (
     <Box>
       {
-        <Box className="" key={_id}>
+        <Box className="" key={_id} sx={{}}>
           {/* <img
                 src={`data:${item.image.contentType};base64,${Buffer.from(
                   item.image.data.data
@@ -48,8 +48,9 @@ const ShopCard = ({
           <Card
             sx={{
               maxWidth: {
-                sm: 345,
+                sm: 400,
               },
+              width: "100%",
               cursor: "pointer",
               position: "relative",
             }}
@@ -73,11 +74,11 @@ const ShopCard = ({
             <Box
               className=""
               sx={{
-                height: {
-                  sm: 385,
-                  xs: 248,
+                maxHeight: {
+                  xs: 200,
                 },
-                padding: "1rem",
+                width: "100%",
+                height: "200px",
               }}
               onClick={onClickHandler}
             >
@@ -107,7 +108,15 @@ const ShopCard = ({
               <Typography variant="body2" color="text.secondary">
                 $ {price}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  overflow: "hidden",
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                }}
+              >
                 {description}
               </Typography>
             </CardContent>

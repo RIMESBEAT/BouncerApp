@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Divider, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
@@ -9,37 +9,36 @@ import ProductDetails from "./ProductDetails";
 import Description from "./Routes/Description";
 import Reviews from "./Routes/Reviews";
 import { useDispatch, useSelector } from "react-redux";
-import { selectedProductReducer } from "../../redux/reducers/productReducer";
-import { selectedProduct } from "../../redux/actions/productsActions";
+import {  useGetSingleProductsQuery } from "../../features/productsApi";
 
 const ProductInfo = () => {
   const { id } = useParams();
+  const { data, error, isLoading } = useGetSingleProductsQuery(id);
   const [tabIndex, setTabIndex] = useState(1);
 
   const dispatch = useDispatch();
-  const  product  = useSelector((state) => state.product);
 
 
+
+ 
+
+
+
+  console.log(data)
   useEffect(() => {
-    productsData();
-  }, [id]);
-
-  const productsData = async () => {
-    await axios
-      .get(`http://localhost:4000/api/getProduct/${id}`)
-
-      .then((response) => {
-        dispatch(selectedProduct(response.data));
-      })
-      .catch((err) => console.log(err));
-  };
-
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <>
       <Box>
-        <ProductDetails {...product} key={id} />
+        {isLoading ? (
+          <Box display="flex" justifyContent="center" padding="4rem">
+            <CircularProgress />
+          </Box>
+        ) : (
+          <ProductDetails {...data} key={id} />
+        )}
       </Box>
       <Divider sx={{ m: "4rem 0" }} />
       <Box
@@ -88,8 +87,8 @@ const ProductInfo = () => {
           gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
         }}
       >
-        {tabIndex === 1 && <Description {...product} />}
-        {tabIndex === 2 && <Reviews {...product} />}
+        {tabIndex === 1 && <Description {...data} key={id} />}
+        {tabIndex === 2 && <Reviews {...data} key={id} />}
       </Box>
       <Newsletter />
     </>

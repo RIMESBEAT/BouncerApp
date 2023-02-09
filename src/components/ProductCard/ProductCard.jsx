@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Buffer } from "buffer";
 import {
   Box,
@@ -11,11 +11,12 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate,  } from "react-router-dom";
 
 const ProductCard = ({ id, title, image, price }) => {
   // const { id } = useParams()
   const navigate = useNavigate()
+  const topRef = useRef(null);
 
   const onClickHandler = () => {
     navigate(`/details/${id}`)
@@ -61,7 +62,7 @@ const ProductCard = ({ id, title, image, price }) => {
                 alt={title}
                 width="100%"
                 height="100%"
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
             </Box>
 

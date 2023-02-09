@@ -16,9 +16,14 @@ import TrustPage from "./components/Trust_Page/TrustPage";
 
 import Upload from "./components/Upload/Upload";
 
+import { ToastContainer } from "react-toastify"
+
+ import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div className="App">
+      <ToastContainer/>
       <Navbar />
 
       <Routes>

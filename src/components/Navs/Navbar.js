@@ -127,7 +127,7 @@ const Navbar = (props) => {
         <Link to="/">
           <img src={Search} alt="" />
         </Link>
-        <Link to="/">
+        <Link to="/cart">
           <img src={Cart} alt="" />
         </Link>
         <Link to="/signin">
@@ -143,12 +143,7 @@ const Navbar = (props) => {
     <Box sx={{ display: "flex", color: "white", paddingBottom: "2rem" }}>
       <div id="scroll-target" style={{ height: "18px" }} />
       <CssBaseline />
-      <AppBar
-        component="nav"
-        sx={{ }}
-        padding="0 4rem"
-        className="navbar"
-      >
+      <AppBar component="nav" sx={{ bgcolor: "var(--black)"}} padding="0 4rem" className="navbar">
         <Toolbar>
           <Typography
             variant="h6"
@@ -181,12 +176,23 @@ const Navbar = (props) => {
             }}
           >
             <Link to="/">
-              <img src={Search} alt=""  />
+              <img src={Search} alt="" />
             </Link>
             <Link to="/cart">
               <Badge badgeContent={2} color="primary">
                 <ShoppingCartOutlinedIcon sx={{ color: "white" }} />
               </Badge>
+            </Link>
+            <Link to="/signin">
+              <img src={UserIcon} alt="" />
+            </Link>
+          </Box>
+          <Box sx={{display: {
+            xs: "flex", 
+            sm: "none"
+          }, gap: "1rem"}}>
+            <Link to="/cart">
+              <img src={Cart} alt="" />
             </Link>
             <Link to="/signin">
               <img src={UserIcon} alt="" />

@@ -5,12 +5,28 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux"
-import {configureStore} from "@reduxjs/toolkit"
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit"
 // import store from './redux/store';
 
+
+import productsReducer, { getProducts } from "./features/productsSlice";
+
+import { productsApi } from './features/productsApi';
+import cartReducer from "./features/cartSlice";
+
 const store = configureStore({
-  reducer:{}
-})
+  reducer: {
+    products: productsReducer,
+    cart: cartReducer,
+    [productsApi.reducerPath]: productsApi.reducer,
+    
+  },
+  middleware: (getDefaultMiddleware) => 
+    getDefaultMiddleware().concat(productsApi.middleware)
+  
+});
+
+store.dispatch(getProducts())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

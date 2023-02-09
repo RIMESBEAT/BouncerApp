@@ -10,9 +10,11 @@ import "./Home.css";
 import zIndex from "@mui/material/styles/zIndex";
 import TestOnly from "../TestOnly/TestOnly";
 import UploadForm from "../TestOnly/UploadForm";
+import { useGetAllProductsQuery } from "../../features/productsApi";
 // import CounterComponent from "../../redux/features/Counter/CounterComponent";
 
 const Home = () => {
+
   return (
     <>
       <Box className=" hero">
